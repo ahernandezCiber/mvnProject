@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ciber.pruebas</groupId>
+	<artifactId>mvnProject</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<scm>
+		<url>https://github.com/ahernandezCiber/mvnProject</url>
+		<connection>https://github.com/ahernandezCiber/mvnProject.git</connection>
+		<developerConnection>scm:https://github.com/ahernandezCiber/mvnProject.git</developerConnection>
+	</scm>
+
+
+	<properties>
+
+		<!-- PROPERTIES -->
+		<resources.properties.directory>src/main/resources</resources.properties.directory>
+		<!-- ENCODE -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.7</jdk.version>
+		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
+		<javax.servlet.version>3.1.0</javax.servlet.version>
+		<jgitFlow.version>1.0-m5.1</jgitFlow.version>
+		<jgitFlow.developBranchName>desarrollo</jgitFlow.developBranchName>
+	</properties>
+
+	<dependencies>
+
+		<!-- HTTPSERVLET Utils -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${resources.properties.directory}</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin.version}</version>
+				<configuration>
+					<warName>mvnProject</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>${jgitFlow.version}</version>
+				<configuration>
+					<flowInitContext>
+						<localOnly>true</localOnly>
+						<enableSshAgent>false</enableSshAgent>
+						<pushReleases>false</pushReleases>
+						<keepBranch>false</keepBranch>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<noTag>true</noTag>
+						<allowUntracked>true</allowUntracked>
+						<pullDevelop>true</pullDevelop>
+						<pullMaster>true</pullMaster>
+						<allowSnapshots>true</allowSnapshots>
+						<masterBranchName>master</masterBranchName>
+						<releaseBranchPrefix>release/</releaseBranchPrefix>
+						<featureBranchPrefix>feature/</featureBranchPrefix>
+						<hotfixBranchPrefix>hotFix/</hotfixBranchPrefix>
+						<noDeploy>true</noDeploy>
+						<useReleaseProfile>true</useReleaseProfile>
+						<noFeatureBuild>true</noFeatureBuild>
+						<developBranchName>${jgitFlow.developBranchName}</developBranchName>
+					</flowInitContext>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
