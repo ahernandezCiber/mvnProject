@@ -80,7 +80,7 @@
 					<pullMaster>true</pullMaster>
 					<allowSnapshots>true</allowSnapshots>
 					<noDeploy>true</noDeploy>
-					<useReleaseProfile>true</useReleaseProfile>
+					<useReleaseProfile>false</useReleaseProfile>
 					<noFeatureBuild>true</noFeatureBuild>
 					<flowInitContext>
 						<masterBranchName>master</masterBranchName>
